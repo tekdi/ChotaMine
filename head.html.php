@@ -26,6 +26,22 @@
 
 	}
 	
+	function  loginToggle() {
+		if ($('#user').is(":visible") ) {
+			$('#user').hide();
+			$('.username').attr('disabled', true);
+			
+			$('#key').show();
+			$('.key').attr('disabled', false);
+		} else {
+			$('#user').show();
+			$('.username').attr('disabled', false);
+			
+			$('#key').hide();
+			$('.key').attr('disabled', true);
+		}
+
+	}
 
 	</script>
 </head>
@@ -34,7 +50,7 @@
 <div id="logo-wrap">
 <div id="logo">
 	<h1><a href="#">LITEMINE</a></h1>
-	<h2>A light Remdine</h2>
+	<h2>A Light Redmine</h2>
 </div>
 </div>
 

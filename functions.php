@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-//ini_set('display_errors', 'On');
+ini_set('display_errors', 'On');
 session_start();
 
 require_once 'RESTclient.php';
@@ -40,6 +40,12 @@ class Utils {
 			return false;
 		}
 	
+	}
+	
+	function requireLogin() {
+		if (!Utils::isLoggedin()) {
+			header('Location: login.php');
+		}
 	}
 	
 	function collectIssues($issues) {

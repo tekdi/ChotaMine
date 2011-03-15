@@ -1,8 +1,8 @@
 <?php
 require_once 'functions.php';
+Utils::requireLogin();
 
-
-$redmine = new Redmine(REMINE_URL, $_SESSION['redmine']['username'], $_SESSION['redmine']['password']);
+$redmine = new Redmine();
 
  
 // Getting all Projects
