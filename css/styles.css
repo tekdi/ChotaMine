@@ -1,0 +1,517 @@
+/* Main CSS Start */
+body {
+background:#111111 url(../images/bg.jpg) no-repeat center 52px;
+font-size: 12px;
+font-family: Helvetica, Arial, Verdana, sans-serif;
+color: #b8b8b8;
+line-height: 18px;
+margin:0 auto;
+}
+#wrapper {
+width:100%;
+}
+a:link {
+text-decoration: none; 
+color:#67cff4
+}
+a:visited {
+text-decoration: none; 
+color:#67cff4
+}
+a:hover {text-decoration:none; 
+color: #2887a9
+}
+a:active {text-decoration: none;
+color: #67cff4; outline:none; 
+position: relative; top: 1px;
+}
+img {
+border: none;
+text-decoration: none;
+}
+strong {
+color: white;
+}
+h1 {
+
+}
+h2 {
+text-shadow: 2px 2px black;
+color: #fff;
+font-size:18px;
+padding:0 0 27px 0;
+}
+h3 {
+color: #fff;
+font-size:16px;
+padding:0 0 27px 0;
+}
+h4 {
+color: #fff;
+font-size:14px;
+padding:0 0 27px 0;
+}
+h5 {
+color: #fff;
+font-size:12px;
+padding:0 0 27px 0;
+}
+h6{
+font-size:11px;
+color:#fff;
+padding:0 0 11px 0;
+}
+/* Main CSS End */
+
+
+/* Header CSS Start */
+#header {
+width: 100%;
+height: 52px;
+background: url(../images/topbar.jpg) repeat-x;
+}
+.logo {
+float: left;
+padding-left: 75px;
+}
+/* Menu CSS Start */
+#outer-menu{
+width:940px;
+margin:0 auto;
+}
+#menu {
+width: 530px;
+padding-top: 13px;
+margin:0 auto;
+}
+#menu ul{
+list-style:none;
+}
+#menu ul li{
+float:left;
+padding:0 3px 0 0;
+}
+#menu ul li a{
+text-decoration:none;
+color: #676767;
+width:90px;
+height:24px;
+text-align:left;
+display:block;
+}
+#menu ul li a.home{
+background:url(../images/btn_home_init_sprite.png) no-repeat;
+}
+#menu ul li a.home:hover, #menu ul li a.home.home-active{
+background-position:0 -24px;
+}
+#menu ul li a.tour{
+background:url(../images/btn_tour_init_sprite.png) no-repeat;
+}
+#menu ul li a.tour:hover, #menu ul li a.tour.tour-active{
+background-position:0 -24px;
+}
+#menu ul li a.pricing{
+background:url(../images/btn_signup_init_sprite.png) no-repeat;
+}
+#menu ul li a.pricing:hover, #menu ul li a.pricing.pricing-active{
+background-position:0 -24px;
+}
+#menu ul li a.blog{
+background:url(../images/btn_blog_init-sprite.png) no-repeat;
+}
+#menu ul li a.blog:hover, #menu ul li a.blog.blog-active{
+background-position:0 -24px;
+}
+#menu ul li a.login{
+background:url(../images/btn_login_init_sprite.png) no-repeat;
+}
+#menu ul li a.login:hover, #menu ul li a.login.login-active{
+background-position:0 -24px;
+}
+#menu ul li a.api{
+background:url(../images/btn_api_init_sprite.png) no-repeat;
+}
+#menu ul li a.api:hover, #menu ul li a.api.api-active{
+background-position:0 -24px;
+}
+/* Menu CSS End */
+
+/* Header CSS End */
+
+/* Content CSS Start */
+#content {
+width:940px;
+margin:0 auto;
+padding-top: 20px;
+}
+.banner-area{
+width:940px;
+float:left;
+padding:370px 0 19px 0;
+}
+.blurb {
+width: 450px;
+margin-bottom: 10px;
+line-height: 20px;
+}
+.readmore{
+float:right;
+margin:27px 54px 0 0;
+}
+.main-content {
+float:left;
+width:940px;
+}
+.column1 {
+text-shadow: 1px 1px #e4e4e4;
+float: left;
+margin-bottom: 30px;
+width:301px;
+}
+.column1 img{
+float: left;
+}
+.column2 {
+text-shadow: 1px 1px #e4e4e4;
+float: left;
+width:301px;
+margin:0 0 0 18px;
+}
+.column3 {
+text-shadow: 1px 1px #e4e4e4;
+float: right;
+width:301px;
+}
+.box1 {
+height: 214px;
+width: 301px;
+background-image: url(../images/home_box.jpg);
+float:left;
+}
+.box2 {
+margin-top: 19px;
+height: 214px;
+width: 301px;
+background-image: url(../images/home_box.jpg);
+}
+.boximage {
+margin-top: 11px;
+margin-left: 11px;
+margin-bottom:5px ;
+}
+.boxtitle {
+font-weight: bold;
+color: #666666;
+}
+.boxtext {
+margin-left: 11px;
+width: 279px;
+color: #676767;
+}
+.buzz {
+height: 108px;
+background:#000;
+width: 913px;
+float:left;
+padding-top:5px; 
+padding-left: 27px;
+margin:2px 0 15px 0;
+}
+.buzz_signup {
+height: 150px;
+background:#000;
+width: 913px;
+float:left;
+padding-top:5px; 
+padding-left: 27px;
+margin:2px 0 15px 0;
+}
+.buzz_tour {
+height: 130px;
+background:#000;
+width: 913px;
+float:left;
+padding-top:5px; 
+padding-left: 27px;
+margin:2px 0 15px 0;
+}
+.buzz_txt1 {
+float: left;
+font-size: 13px;
+line-height: 20px;
+width:113px;
+margin:10px 0 0 0;
+}
+.buzz_txt2 {
+float: left;
+font-size: 13px;
+line-height: 20px;
+width:140px;
+margin:10px 15px 0 0;
+}
+
+/* Content CSS End */
+
+
+/* Footer CSS Start */
+
+.footer-outer{
+	padding:17px 0 22px 0;
+	width:100%;
+}
+
+.footer {
+font-size: 11px;
+margin: 0 auto;
+width: 923px;
+padding:0 0 0 17px;
+height:160px;
+}
+.footertext1 {
+width: 470px;
+padding-bottom: 10px;
+padding-top: 30px;
+padding-right: 27px;
+padding-left: 10px;
+float: left;
+}
+.copyright{
+float:left;
+padding:3px 0 0 0;
+}
+.footertext2 {
+width: 400px;
+padding-bottom: 10px;
+padding-top: 115px;
+padding-left: 0px;
+float: right;
+}
+.footertext2 ul{
+list-style:none;
+float:left;
+}
+.footertext2 ul li{
+float:left;
+background:url(../images/footer-sap.gif) no-repeat right 4px;
+padding:0 4px 0 4px;
+}
+.footertext2 ul li.no-bg{
+background:none;
+}
+.footertext2 ul li a{
+display:block;
+text-decoration:none;
+}
+/* Footer CSS End */
+
+iframe.facebook {
+	border:medium none;
+	float:left;
+	height:35px;
+	overflow:hidden;
+	width:80px;
+	margin-left: 10px;
+}
+
+/* Sub Pages CSS Start */
+.col-left {
+float: left;
+width: 569px;
+margin-bottom: 35px;
+background: url(../images/tour_box.jpg) no-repeat;
+padding:14px 0 0 0;
+}
+.screencast{
+float: left;
+width: 543px;
+height: 360px;
+margin:0 0 13px 11px;
+}
+.col-left p{
+padding:0 0 10px 0;
+}
+.col-right{
+width: 340px;
+float: right;
+}
+.thumb {
+list-style:none;
+float:left;
+}
+.thumb li{
+line-height: 15px;
+width: 340px;
+height: 72px;
+float:left;
+margin-bottom: 10px;
+display:block;
+}
+.thumb li img {
+margin-right: 14px;
+float: left;
+}
+.thumb li span {
+font-weight: bold;
+font-size: 16px;
+color: #60aad9;
+}
+.thumb li p {
+margin-top: 5px;
+}
+.signup-column1 {
+float: left;
+margin-bottom: 50px;
+width:411px;
+}
+.signup-box1 {
+background-repeat: no-repeat;
+background-image: url(../images/signup_box.png);
+height: 235px;
+width: 411px;
+float:left;
+padding:67px 0 0 0;
+}
+#signupForm {
+width: 355px;
+margin-left: 28px;
+margin-bottom: 90px;
+}
+#signupForm label {
+text-shadow: 1px 1px #eeeeee;
+font-size:18px;
+color:#9c9c9c;
+float:left;
+display:block;
+width:112px;
+line-height:20px;
+}
+.fields {
+float: left;
+width:230px;
+background-color: #161616;
+border: solid;
+border-width: 1px;
+border-color: #303030;
+color: #fff;
+padding: 3px 3px 3px 3px;
+height:16px;
+margin:0 0 8px 0;
+}
+#submitbutton {
+margin-right: 5px;
+margin-top: 5px;
+float: right;
+cursor: pointer;
+}
+.signup-box2 {
+width: 411px;
+float:left;
+padding:40px 0 0 0;
+}
+.signup-box2 h2{
+padding:0 0 15px 0 !important;
+}
+.signup-box2 p{
+padding:0 0 15px 0 !important;
+}
+.signup-box3 {
+background: url(../images/download_bg.jpg) no-repeat;
+width: 411px;
+height: 189px;
+float:left;
+}
+.box3text {
+float: left;
+margin-left: 191px;
+margin-top: 60px;
+}
+.signup-box3text {
+float: left;
+margin-left: 191px;
+margin-top: 60px;
+}
+.download_btn{
+float: left;
+margin-top: 10px;
+}
+.signup-column2 {
+width: 490px;
+float: right;
+margin-bottom: 30px;
+}
+.signup-column2 p{
+padding:13px 0 0 0;
+}
+.masthead {
+background: url(../images/masthead.png) no-repeat;
+width: 490px;
+height: 224px;
+float:left;
+}
+.mastheadtxt{
+width: 270px;
+float: left;
+padding-left: 30px;
+margin-top: 130px;
+}
+.features{
+list-style:none;
+float:left;
+padding:13px 0 0 25px ;
+}
+.features li{
+background:url(../images/list-bullet.gif) no-repeat left 6px;
+padding:0 0 0 15px;
+color:#fff;
+}
+
+/* Sub Pages CSS End */
+
+/* Signup status text */
+#statusText {
+	color:#41789B;
+	text-shadow: 1px 1px #E0E0E0;
+	margin: 10px 7px 0 0;
+	float:right;
+	clear:both;
+}
+/* Signup status text end */
+
+/* Bundle Hunt CSS Code Start */
+.bh-signup-box1 {
+background-repeat: no-repeat;
+background-image: url(../images/bundlehunt-signup_box1.png);
+height: 275px;
+width: 411px;
+float:left;
+padding:67px 0 0 0;
+}
+.bh-signup-box2 {
+background-repeat: no-repeat;
+background-image: url(../images/bundlehunt-signup_box2.png);
+height: 200px;
+width: 411px;
+float:left;
+padding:54px 0 0 0;
+}
+.bh-banner-area{
+width:940px;
+float:left;
+padding:370px 0 80px 0;
+}
+#bh-signupForm {
+width: 355px;
+margin-left: 28px;
+margin-bottom: 90px;
+}
+#bh-signupForm label {
+text-shadow: 1px 1px #eeeeee;
+font-size:18px;
+color:#9c9c9c;
+float:left;
+display:block;
+width:112px;
+line-height:20px;
+}
+/* Bundle Hunt CSS Code End */
