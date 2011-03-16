@@ -6,12 +6,14 @@ require 'head.html.php';
 <form method="post" action="<?php echo Utils::getProcessLink(__FILE__); ?>" class="niceform">
 
 
-<table id="user" width="500" align="center">
+<table id="user" width="600" align="center">
 	<tr>
-		<td align="right"><label for="username">Redmine URL</label></td>
+		<td align="right" width="200"><label for="username">Redmine URL</label></td>
 		<td align="left">
-			<input name="url" type="text" id="url" size="25" class="username" value="<?php echo $_COOKIE['redmine_url'] ? $_COOKIE['redmine_url'] : ''; ?>" />
+			<input name="url" type="text" id="url" size="25" class="username" value="<?php echo Utils::getLastUrl(); ?>" />
 			<input type="checkbox" value="1" name="save_url" class="username" /> Save
+			<br />
+			<!--<?php echo Utils::select(Utils::getUrls(), '', 'id="urllist" onchange="loadUrl(this.value)"'); ?>-->
 		</td>
 	</tr>
 	
@@ -36,12 +38,14 @@ require 'head.html.php';
 
 </table>
 <p> </p>
-<table id="key" width="500" align="center">
+<table id="key" width="600" align="center">
 	<tr>
-		<td align="right"><label for="url">Redmine URL</label></td>
+		<td align="right" width="200"><label for="url">Redmine URL</label></td>
 		<td align="left">
-			<input name="url" type="text" id="url" size="25" class="key" value="<?php echo $_COOKIE['redmine_url'] ? $_COOKIE['redmine_url'] : ''; ?>" />
+			<input name="url" type="text" id="url" size="25" class="key" value="<?php echo Utils::getLastUrl(); ?>" />
 			<input type="checkbox" value="1" name="save_url" class="key" /> Save
+			<br />
+			<!--<?php echo Utils::select(Utils::getUrls(), '', 'id="urllist" onchange="loadUrl(this.value)"'); ?>-->
 		</td>
 	</tr>
 	
