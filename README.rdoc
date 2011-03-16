@@ -1,0 +1,22 @@
+= ChotaMine
+
+This is a light frontend for Redmine, the popular Project Management software. Completely written in PHP!
+Developed by the team at Tekdi Web Solutions - http://tekdi.net
+
+The following features are available as of now
+* Login using API key
+* Create multiple issues
+* Create Projects (custom fields not supported)
+
+
+= Prerequisites
+
+* Redmine 1.1.x
+* Server running PHP 5
+
+= Installation
+
+- Enable webservices in your Redmine settings
+- Get your API key: You can find your API key on your account page ( /my/account ) when logged in, on the right-hand pane of the default layout.
+- Place all the chotamine files in a folder on your server
+- Run chotamine eg: http://yoursite.com/chotamine/

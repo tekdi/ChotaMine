@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
 session_start();
 
@@ -34,8 +34,8 @@ class Utils {
 	}
 	
 	function isLoggedin() {
-		$url = $_SESSION['redmine']['url'] || $_COOKIE['redmine_url'];
-		if ($_SESSION['redmine']['username'] && $_SESSION['redmine']['password'] && $url) {
+		$url = isset($_SESSION['redmine']['url']) || $_COOKIE['redmine_url'];
+		if (isset($_SESSION['redmine']['username']) && isset($_SESSION['redmine']['password']) && $url) {
 			return true;
 		}  else {
 			return false;

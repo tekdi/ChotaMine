@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 	<title>Redmine - Issue Add</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7/themes/smoothness/jquery-ui.css" />
 
@@ -22,7 +23,7 @@
 			$('.copy').clone(false).removeClass('copy').removeClass('hasDatepicker').appendTo('.rows');
 		}
 		$('.date').datepicker({dateFormat: 'yy-mm-dd'});
-		//$('#ui-datepicker-div').hide();
+		$('#ui-datepicker-div').hide();
 
 	}
 	
@@ -54,20 +55,24 @@
 
 <div id="logo-wrap">
 <div id="logo">
-	<h1><a href="#">LITEMINE</a></h1>
-	<h2>A Light Redmine</h2>
+	<h1><a href="#">ChotaMine</a></h1>
+	<h2>beta</h2>
 </div>
 </div>
 
 <!-- start header -->
 <div id="header">
 	<div id="menu">
+		<?php if (Utils::isLoggedin()) { ?>
 		<ul>
 			<li class=""><a href="issues.php">Add issues</a></li>
 			<li><a href="projects.php">Add Projects</a></li>
 			<li><a href="issuescsv.php">Upload Issues</a></li>
 			<li><a href="logout.php">Log out</a></li>
 		</ul>
+		<?php } else { ?>
+		<ul><li><a>Login to add issues projects & more</a></li></ul>
+		<?php } ?>
 	</div>
 </div>
 <!-- end header -->
