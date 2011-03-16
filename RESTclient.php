@@ -25,7 +25,7 @@ class RESTClient {
 
     public function createRequest($url, $method, $arr = null) {
         $this->curr_url = $url;
-        $this->req =& new HTTP_Request($url);
+        $this->req = new HTTP_Request($url);
         if ($this->user_name != "" && $this->password != "") {
            $this->req->setBasicAuth($this->user_name, $this->password);
         }        

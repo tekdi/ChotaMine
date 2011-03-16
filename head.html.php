@@ -42,6 +42,11 @@
 		}
 
 	}
+	
+	function loadUrl() {
+		alert($('#urllist').value);
+		$('#url').value = $('#urllist').value;
+	}
 
 	</script>
 </head>
@@ -61,6 +66,7 @@
 			<li class=""><a href="issues.php">Add issues</a></li>
 			<li><a href="projects.php">Add Projects</a></li>
 			<li><a href="issuescsv.php">Upload Issues</a></li>
+			<li><a href="logout.php">Log out</a></li>
 		</ul>
 	</div>
 </div>
@@ -72,3 +78,4 @@
 <div id="page">
 	<!-- start content -->
 	<div id="content">
+	<?php echo Utils::showMessage(); ?>

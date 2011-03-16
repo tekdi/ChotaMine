@@ -12,11 +12,13 @@ if ($login) {
 	$_SESSION['redmine']['username'] 	= $_POST['username'];
 	$_SESSION['redmine']['password'] 	= $_POST['password'];
 	$_SESSION['redmine']['url'] 		= $_POST['url'];
-	
-	if ($_POST['save_url'] || $_SESSION['redmine']['url'])
-		setcookie('redmine_url', $_SESSION['redmine']['url'], time() + (365*24*3600));
+
+	if ($_POST['save_url']) {
+		Utils::storeUrl($_POST['url']);
+	}
 		
 	header('Location:issues.php');
 } else {
+	$_SESSION['redmine']['message'] = 'Invalid username/password/API key or incorrect link. Please try again.';
 	header('Location:login.php');
 }

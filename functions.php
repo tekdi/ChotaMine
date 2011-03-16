@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 'On');
+//ini_set('display_errors', 'On');
 session_start();
 
 require_once 'RESTclient.php';
@@ -34,7 +34,8 @@ class Utils {
 	}
 	
 	function isLoggedin() {
-		if ($_SESSION['redmine']['username'] && $_SESSION['redmine']['password']) {
+		$url = $_SESSION['redmine']['url'] || $_COOKIE['redmine_url'];
+		if ($_SESSION['redmine']['username'] && $_SESSION['redmine']['password'] && $url) {
 			return true;
 		}  else {
 			return false;
@@ -44,6 +45,7 @@ class Utils {
 	
 	function requireLogin() {
 		if (!Utils::isLoggedin()) {
+			$_SESSION['redmine']['message'] = 'Please Login';
 			header('Location: login.php');
 		}
 	}
@@ -78,6 +80,41 @@ class Utils {
 			$i++;
 		}
 		return $html;
+	}
+	
+	function showMessage() {
+		if ($_SESSION['redmine']['message'])
+			$html = '<p class="message">'.$_SESSION['redmine']['message'].'</p>';
+		else
+			$html = '';
+		
+		// Clear message
+		$_SESSION['redmine']['message'] = '';
+		
+		return $html;
+	}
+	
+	function storeUrl($url) {
+		$urls = explode('|*|', $_COOKIE['redmine_url']);
+		$urls[] = urlencode($url);
+		$urls = implode('|*|', $urls);
+		
+		setcookie('redmine_url', $urls, time() + (365*24*3600));
+	}
+	
+	function getLastUrl() {
+
+		$urls = Utils::getUrls();
+		return end($urls);
+	}
+	
+	function getUrls() {
+		$urls = explode('|*|', $_COOKIE['redmine_url']);
+		foreach ($urls as $url) {
+			if ($url) $temp[urldecode($url)] = urldecode($url);
+		}
+
+		return $temp;
 	}
 
 }

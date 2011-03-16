@@ -20,21 +20,21 @@ class Redmine extends RESTClient {
 	var $username 	= '';
 	var $password 	= '';
 	
-	function Redmine($url, $username, $password) {
+	function Redmine($url='', $username='', $password='') {
 		$this->url 			= $url ? $url : $_SESSION['redmine']['url'];
 		$this->username		= $username ? $username : $_SESSION['redmine']['username'];
 		$this->password		= $password ? $password : $_SESSION['redmine']['password'];
 	}
 	
 	function login() {
-		$rest = new RESTclient($this->url.'projects.json?limit=1', $this->username, $this->password);
+		$rest = new RESTclient($this->url.'users.json?limit=1', $this->username, $this->password);
 		$output = $rest->getResponse();
 		$op = json_decode($output);
-		
-		if (isset($op->projects)) {
+
+		if (is_array($op->users)) {
 			return true;
 		} else {
-			return true;
+			return false;
 		}
 	}
 	

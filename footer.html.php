@@ -9,7 +9,9 @@
 <!-- start footer -->
 <div id="footer">
 	<div id="footer-wrap">
-	<p id="legal"> LITEMINE is a <a href="http://www.tekdi.net/" target="_blank"><strong>Tekdi</strong></a> produce | Design by <a style="color:#999999" href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+	<p id="legal"> 
+		<strong>LITEMINE is brought to you by <a href="http://www.tekdi.net/" target="_blank"><strong>Tekdi</strong></a></strong>
+	</p>
 	</div>
 </div>
 <!-- end footer -->
