@@ -1,9 +1,7 @@
 <?php
 require_once 'functions.php';
 
-$username = $_SESSION['redmine']['username'];
-$password = $_SESSION['redmine']['password'];
-$redmine = new Redmine(REMINE_URL, $username, $password);
+$redmine = new Redmine();
 print_r($_POST['project']);
 //unset($_POST['project']['custom_field_values']);
 $project = $redmine->saveProject($_POST['project']);

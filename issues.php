@@ -18,17 +18,18 @@ $tmrw = date('Y-m-d', time() + 24 * 3600);
 
 ?>
 <?php include 'head.html.php'; ?>
+<h2>Add Issues</h2>
+<p>Multiple issues can be added, all assigned to the same project.</p>
 <form method="post" action="<?php echo Utils::getProcessLink(__FILE__); ?>" class="niceform">
-
 
 <table cellpadding="5" class="rows" width="900" align="center">
 	<tr class="project">
-		<th valign="top">Please Select a Project</th>
+		<th valign="top">Please Select a Project *</th>
 		<td valign="top" colspan="5"><?php echo Utils::Select($projects, 'project'); ?></td>
 	</tr>
 	
 	<tr>
-		<th>Subject</th>
+		<th>Subject *</th>
 		<th>Description</th>
 		<th>Assign To</th>
 		<th>Start Date</th>
@@ -39,10 +40,10 @@ $tmrw = date('Y-m-d', time() + 24 * 3600);
 	<tr class="copy">
 		<td valign="top"><input type="text" name="issues[subject][]" size="30"/></td>
 		<td valign="top"><input type="text" name="issues[description][]" size="36" /></td>
-		<td valign="top"><?php echo Utils::Select($users, 'issues[assignee][]', 'id="assignee"'); ?></td>
-		<td valign="top"><input type="text" name="issues[start][]" class="date" size="10" value="<?php echo $today; ?>" /></td>
-		<td valign="top"><input type="text" name="issues[due][]" class="date" size="10" value="<?php echo $tmrw; ?>" /></td>
-		<td valign="top"><input type="text" name="issues[hours][]" size="4" /></td>
+		<td valign="top"><?php echo Utils::Select($users, 'issues[assigned_to_id][]', 'id="assignee"'); ?></td>
+		<td valign="top"><input type="text" name="issues[start_date][]" class="date" size="10" value="<?php echo $today; ?>" /></td>
+		<td valign="top"><input type="text" name="issues[due_date][]" class="date" size="10" value="<?php echo $tmrw; ?>" /></td>
+		<td valign="top"><input type="text" name="issues[estimated_hours][]" size="4" /></td>
 	</tr>
 
 </table>
@@ -56,7 +57,6 @@ $tmrw = date('Y-m-d', time() + 24 * 3600);
 
 
 <script>
-	//$('.date').datepicker({dateFormat: 'yy-mm-dd'});
 	addmore(4);
 </script>
 

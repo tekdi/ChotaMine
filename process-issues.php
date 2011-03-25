@@ -1,9 +1,7 @@
 <?php
 require_once 'functions.php';
 
-$username = $_SESSION['redmine']['username'];
-$password = $_SESSION['redmine']['password'];
-$redmine = new Redmine(REMINE_URL, $username, $password);
+$redmine = new Redmine();
 
 $issues = Utils::collectIssues($_POST['issues']);
 $issues = $redmine->saveIssues($issues);

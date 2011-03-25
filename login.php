@@ -4,8 +4,8 @@ require 'head.html.php';
 ?>
 
 <form method="post" action="<?php echo Utils::getProcessLink(__FILE__); ?>" class="niceform">
-
-
+<h2>Chotamine</h2>
+<p>A lightweight redmine wrapper. Use your redmine API key to add issues projects and more.</p>
 <table id="user" width="600" align="center">
 	<tr>
 		<td align="right" width="200"><label for="username">Redmine URL</label></td>
@@ -58,11 +58,13 @@ require 'head.html.php';
 	</tr>
 
 	<tr>
-		<td align="left" colspan="2"></td>
+		<td align="left" colspan="2">
+			<p>You can find your API key on your account page ( /my/account ) when logged in, on the right-hand pane of the default layout.</p>
+		</td>
 	</tr>
 	
 	<tr>
-		<td align="left"><a href="#" onclick="loginToggle(); return false;">Provide Username/Pass</a></td>
+		<td align="left"><!--<a href="#" onclick="loginToggle(); return false;">Provide Username/Pass</a>--></td>
 		<td align="right"><input type="submit" name="submit" value="Login" /></td>
 	</tr>
 </table>

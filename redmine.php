@@ -1,20 +1,7 @@
 <?php
-require_once 'RESTclient.php';
 require_once 'ActiveResource.php';
-/*
-$inputs		        = array();
-$url = 'http://219.64.91.134:880/projects.json?key=8fba3c47dd27cf93a7e7a9f9201c6fe71fb65b90';
-$inputs['key'] = '8fba3c47dd27cf93a7e7a9f9201c6fe71fb65b90';
 
-$rest = new RESTclient();
-$rest->createRequest($url, "GET", $inputs);
-$rest->sendRequest();
-$output = $rest->getResponse();
-//print_r($rest);
-echo '<h2>Create</h2>';
-echo $output;
-*/
-class Redmine extends RESTClient {
+class Redmine {
 
 	var $url 		= '';
 	var $username 	= '';
@@ -24,14 +11,33 @@ class Redmine extends RESTClient {
 		$this->url 			= $url ? $url : $_SESSION['redmine']['url'];
 		$this->username		= $username ? $username : $_SESSION['redmine']['username'];
 		$this->password		= $password ? $password : $_SESSION['redmine']['password'];
+		
+		if (substr($this->url,0,8) == 'https://') {
+			$site = str_replace('https://', '', $this->url);
+			$this->site = 'https://'.$this->username.':'.$this->password.'@'.$site;
+		} elseif (substr($this->url,0,7) == 'http://') {
+			$site = str_replace('http://', '', $this->url);
+			$this->site = 'http://'.$this->username.':'.$this->password.'@'.$site;
+		} else {
+			$this->site			= 'http://'.$this->username.':'.$this->password.'@'.$this->url;
+		}
+
 	}
 	
 	function login() {
-		$rest = new RESTclient($this->url.'users.json?limit=1', $this->username, $this->password);
-		$output = $rest->getResponse();
-		$op = json_decode($output);
+		
+		$user = new ActiveResource();
+		$user->element_name 	= 'users';
+		$user->site 			= $this->site;
+		$user->request_format	= 'xml';
+		try {
+			$user->find('current');
+		} catch (Exception $e) {
+			$user->set('mail', '');
+		}
+		$mail = $user->__get('mail');
 
-		if (is_array($op->users)) {
+		if (strlen($mail) > 6) {
 			return true;
 		} else {
 			return false;
@@ -39,28 +45,39 @@ class Redmine extends RESTClient {
 	}
 	
 	function getProjects() {
-		if (is_object($_SESSION['redmine']['projects'])) {
-			return json_decode($_SESSION['redmine']['projects']);
+		if (is_object($_SESSION['redmine_data']['projects'])) {
+			return $_SESSION['redmine_data']['projects'];
 		}
-		
-		$rest = new RESTclient($this->url.'projects.json?limit=100', $this->username, $this->password);
-		$output = $rest->getResponse();
-		$_SESSION['redmine']['projects'] = $output;
 
-		return json_decode($output);
+		$inputs['limit'] = 100;
+		$projects = new ActiveResource();
+		$projects->element_name 	= 'projects';
+		$projects->site 			= $this->site;
+		$projects->request_format	= 'json';
+		$projects->find('all', $inputs);
+		
+		$output = $projects->_data;
+		$_SESSION['redmine_data']['projects'] = $output;
+
+		return $output;
 	}
 
 	function getUsers() {
-		if (is_object($_SESSION['redmine']['users'])) {
-			return json_decode($_SESSION['redmine']['users']);
+		if (is_object($_SESSION['redmine_data']['users'])) {
+			return $_SESSION['redmine_data']['users'];
 		}
+
+		$inputs['limit'] = 100;
+		$projects = new ActiveResource();
+		$projects->element_name 	= 'users';
+		$projects->site 			= $this->site;
+		$projects->request_format	= 'json';
+		$projects->find('all', $inputs);
 		
-		$rest = new RESTclient($this->url.'users.json?limit=100', $this->username, $this->password);
-		$output = $rest->getResponse();
-		$_SESSION['redmine']['users'] = $output;
+		$output = $projects->_data;
+		$_SESSION['redmine_data']['users'] = $output;
 
-		return json_decode($output);
-
+		return $output;
 	}
 	
 	function processProjects($projects) {
@@ -102,10 +119,9 @@ class Redmine extends RESTClient {
 		$rest->password 		= $this->password;
 		$rest->request_format	= 'xml';
 		$rest->save();
-		print_r($rest);
 	}
 	
-	function saveIssues( &$issues ) {
+	function saveIssues( $issues ) {
 		
 		$i = 0;
 		foreach ($issues as $k => $issue) {
@@ -113,11 +129,10 @@ class Redmine extends RESTClient {
 			
 			$rest = new ActiveResource($issue);
 			$rest->element_name 	= 'issues';
-			$rest->site 			= $this->url;
-			$rest->user 			= $this->username;
-			$rest->password 		= $this->password;
+			$rest->site 			= $this->site;
 			$rest->request_format	= 'xml';
 			$rest->save();
+
 			$op = $rest->__get('id');
 
 			if ($op > 0) {

@@ -1,14 +1,23 @@
+<?php 
+$title = 'Chotamine - ';
+$pcs = explode('.', basename($_SERVER['REQUEST_URI']));
+$title .= ucfirst($pcs[0]);
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<title>Redmine - Issue Add</title>
+	<title><?php echo $title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link rel="icon" href="images/favicon.ico" />
+	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7/themes/smoothness/jquery-ui.css" />
 
+	<!-- JS -->
 	<script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-	<script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://github.com/malsup/corner/raw/master/jquery.corner.js?v2.09"></script>
+	<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+	<script type="text/javascript" language="javascript" src="http://github.com/malsup/corner/raw/master/jquery.corner.js?v2.09"></script>
 
 	<script>
 	$('#header').corner();

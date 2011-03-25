@@ -194,7 +194,7 @@ class ActiveResource {
 	 * DELETE /collection/id.xml
 	 */
 	function destroy () {
-		return $this->_send_and_receive ($this->site . $this->element_name . '/' . $this->_data['id'] . '.xml', 'DELETE');
+		return $this->_send_and_receive ($this->site . $this->element_name . '/' . $this->_data['id'] . '.' . $this->request_format, 'DELETE');
 	}
 
 	/**
@@ -208,13 +208,13 @@ class ActiveResource {
 			$id = $this->_data['id'];
 		}
 		if ($id == 'all') {
-			$url = $this->site . $this->element_name . '.xml';
+			$url = $this->site . $this->element_name . '.' . $this->request_format;
 			if (count ($options) > 0) {
 				$url .= '?' . http_build_query ($options);
 			}
 			return $this->_send_and_receive ($url, 'GET');
 		}
-		return $this->_send_and_receive ($this->site . $this->element_name . '/' . $id . '.xml', 'GET');
+		return $this->_send_and_receive ($this->site . $this->element_name . '/' . $id . '.' . $this->request_format, 'GET');
 	}
 
 	/**
@@ -228,7 +228,7 @@ class ActiveResource {
         if ($this->_data['id']) { 
           $req .= '/' . $this->_data['id'];
         }
-        $req .= '/' . $method . '.xml';
+        $req .= '/' . $method . '.' . $this->request_format;
 		if (count ($options) > 0) {
 			$req .= '?' . http_build_query ($options);
 		}
@@ -245,7 +245,7 @@ class ActiveResource {
         if ($this->_data['id']) {
           $req .= '/' . $this->_data['id'];
         }
-        $req .= '/' . $method . '.xml';
+        $req .= '/' . $method . '.' . $this->request_format;
 		return $this->_send_and_receive ($req, 'POST', $options);
 	}
 
@@ -338,6 +338,7 @@ class ActiveResource {
 		} elseif ($this->request_format == 'json') {
 			$params[$el] = $data;
 			$params = json_encode($params);
+			echo $params;
 		}
 		
 		$this->request_body = $params;
@@ -365,41 +366,9 @@ class ActiveResource {
 			}
 		}
 
-		// parse XML response
-		$xml = new SimpleXMLElement ($res);
-
-		if ($xml->getName () == $this->element_name) {
-			// multiple
-			$res = array ();
-			$cls = get_class ($this);
-			foreach ($xml->children () as $child) {
-				$obj = new $cls;
-				foreach ((array) $child as $k => $v) {
-					$k = str_replace ('-', '_', $k);
-					if (isset ($v['nil']) && $v['nil'] == 'true') {
-						continue;
-					} else {
-						$obj->_data[$k] = $v;
-					}
-				}
-				$res[] = $obj;
-			}
-			return $res;
-		} elseif ($xml->getName () == 'errors') {
-			// parse error message
-			$this->error = $xml->error;
-			$this->errno = $this->response_code;
-			return false;
-		}
-
-		foreach ((array) $xml as $k => $v) {
-			$k = str_replace ('-', '_', $k);
-			if (isset ($v['nil']) && $v['nil'] == 'true') {
-				continue;
-			} else {
-				$this->_data[$k] = $v;
-			}
-		}
+		$funcname = 'parse'.$this->request_format;
+		$this->$funcname($res);
+		
 		return $this;
 	}
 
@@ -503,48 +472,47 @@ class ActiveResource {
 		}
 		return $this;
 	}
+	
+	function parsejson($response) {
+		$temp = json_decode($response);
+		$this->_data = $temp;
+	}
+	
+	function parsexml($response) {
+		$xml = new SimpleXMLElement ($response);
+
+		if ($xml->getName () == $this->element_name) {
+			// multiple
+			$res = array ();
+			$cls = get_class ($this);
+			foreach ($xml->children () as $child) {
+				$obj = new $cls;
+				foreach ((array) $child as $k => $v) {
+					$k = str_replace ('-', '_', $k);
+					if (isset ($v['nil']) && $v['nil'] == 'true') {
+						continue;
+					} else {
+						$obj->_data[$k] = $v;
+					}
+				}
+				$res[] = $obj;
+			}
+			return $res;
+		} elseif ($xml->getName () == 'errors') {
+			// parse error message
+			$this->error = $xml->error;
+			$this->errno = $this->response_code;
+			return false;
+		}
+
+		foreach ((array) $xml as $k => $v) {
+			$k = str_replace ('-', '_', $k);
+			if (isset ($v['nil']) && $v['nil'] == 'true') {
+				continue;
+			} else {
+				$this->_data[$k] = $v;
+			}
+		}
+		
+	}
 }
-
-/** TODO: Replace with a proper set of tests.
-
-class Test extends ActiveResource {}
-
-$t = new Test;
-
-echo $t->pleuralize ('person') . "\n";
-echo $t->pleuralize ('people') . "\n";
-echo $t->pleuralize ('man') . "\n";
-echo $t->pleuralize ('woman') . "\n";
-echo $t->pleuralize ('women') . "\n";
-echo $t->pleuralize ('child') . "\n";
-echo $t->pleuralize ('sheep') . "\n";
-echo $t->pleuralize ('octopus') . "\n";
-echo $t->pleuralize ('virus') . "\n";
-echo $t->pleuralize ('quiz') . "\n";
-echo $t->pleuralize ('axis') . "\n";
-echo $t->pleuralize ('axe') . "\n";
-echo $t->pleuralize ('buffalo') . "\n";
-echo $t->pleuralize ('tomato') . "\n";
-echo $t->pleuralize ('potato') . "\n";
-echo $t->pleuralize ('ox') . "\n";
-echo $t->pleuralize ('mouse') . "\n";
-echo $t->pleuralize ('matrix') . "\n";
-echo $t->pleuralize ('vertex') . "\n";
-echo $t->pleuralize ('vortex') . "\n";
-echo $t->pleuralize ('index') . "\n";
-echo $t->pleuralize ('sandwich') . "\n";
-echo $t->pleuralize ('mass') . "\n";
-echo $t->pleuralize ('fax') . "\n";
-echo $t->pleuralize ('pin') . "\n";
-echo $t->pleuralize ('touch') . "\n";
-echo $t->pleuralize ('sash') . "\n";
-echo $t->pleuralize ('bromium') . "\n";
-echo $t->pleuralize ('prophecy') . "\n";
-echo $t->pleuralize ('crisis') . "\n";
-echo $t->pleuralize ('life') . "\n";
-echo $t->pleuralize ('wife') . "\n";
-echo $t->pleuralize ('song') . "\n";
-
-*/
-
-?>

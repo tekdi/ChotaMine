@@ -2,7 +2,7 @@
 require_once 'functions.php';
 Utils::requireLogin();
 
-$redmine = new Redmine(REMINE_URL, $_SESSION['redmine']['username'], $_SESSION['redmine']['password']);
+$redmine = new Redmine();
  
 // Getting all Projects
 $projects = $redmine->getProjects();
@@ -13,10 +13,11 @@ $projects = $redmine->processProjects($projects);
 <?php include 'head.html.php'; ?>
 <form method="post" action="<?php echo Utils::getProcessLink(__FILE__); ?>" class="niceform">
 
-
+<h2>Create a new project</h2>
+<p>Will not work if you have any custom fields set to required.</p>
 <table cellpadding="5" class="rows" width="900" align="center" cellspacing="0">
 	<tr class="row0">
-		<td align="right">Name</td>
+		<td align="right">Name *</td>
 		<td align="left"><input type="text" name="project[name]" size="30"/></td>
 	</tr>
 	
@@ -26,7 +27,7 @@ $projects = $redmine->processProjects($projects);
 	</tr>
 
 	<tr class="row0">
-		<td align="right">Identifer</td>
+		<td align="right">Identifer *</td>
 		<td align="left"><input type="text" name="project[identifier]" size="30"/></td>
 	</tr>
 		
@@ -45,7 +46,7 @@ $projects = $redmine->processProjects($projects);
 		<td align="left"><input type="checkbox" name="project[is_public]" value="1" /></td>
 	</tr>
 
-	<?php echo Utils::customFieldRow($custom_fields['project'], 0); ?>
+	<?php //echo Utils::customFieldRow($custom_fields['project'], 0); ?>
 	
 </table>
 <p></p>
@@ -56,12 +57,6 @@ $projects = $redmine->processProjects($projects);
 </td>
 </tr>
 </table>
-
-
-<script>
-	//$('.date').datepicker({dateFormat: 'yy-mm-dd'});
-	addmore(4);
-</script>
 
 </form>
 

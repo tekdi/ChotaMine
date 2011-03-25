@@ -1,9 +1,11 @@
 <?php
-//error_reporting(E_ALL);
+error_reporting(0);
+//error_reporting(0);
 //ini_set('display_errors', 'On');
 session_start();
+$_SESSION['redmine_auth'] = array();
+$_SESSION['redmine_message'] = '';
 
-require_once 'RESTclient.php';
 require_once 'redmine.php';
 require_once 'config.php';
 
@@ -45,7 +47,7 @@ class Utils {
 	
 	function requireLogin() {
 		if (!Utils::isLoggedin()) {
-			$_SESSION['redmine']['message'] = 'Please Login';
+			Utils::setMessage('Please Login');
 			header('Location: login.php');
 		}
 	}
@@ -83,15 +85,19 @@ class Utils {
 	}
 	
 	function showMessage() {
-		if ($_SESSION['redmine']['message'])
-			$html = '<p class="message">'.$_SESSION['redmine']['message'].'</p>';
+		if ($_SESSION['redmine_message'])
+			$html = '<p class="message">'.$_SESSION['redmine_message'].'</p>';
 		else
 			$html = '';
 		
 		// Clear message
-		$_SESSION['redmine']['message'] = '';
+		Utils::setMessage('');
 		
 		return $html;
+	}
+	
+	function setMessage($message) {
+		$_SESSION['redmine_message'] = $message;
 	}
 	
 	function storeUrl($url) {
@@ -109,6 +115,7 @@ class Utils {
 	}
 	
 	function getUrls() {
+		$temp = array();
 		$urls = explode('|*|', $_COOKIE['redmine_url']);
 		foreach ($urls as $url) {
 			if ($url) $temp[urldecode($url)] = urldecode($url);
@@ -120,6 +127,10 @@ class Utils {
 }
 
 // Functions
+
+/*
+ * Needed as a walk array callback
+ */
 function issues_result($field) {
 	echo '<th align="left">' . ucfirst($field) . '</th>';
 }
