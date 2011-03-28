@@ -338,7 +338,6 @@ class ActiveResource {
 		} elseif ($this->request_format == 'json') {
 			$params[$el] = $data;
 			$params = json_encode($params);
-			echo $params;
 		}
 		
 		$this->request_body = $params;
