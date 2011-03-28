@@ -19,6 +19,6 @@ if ($login) {
 		
 	header('Location:issues.php');
 } else {
-	$_SESSION['redmine']['message'] = 'Invalid username/password/API key or incorrect link. Please try again.';
+	Utils::setMessage('Invalid username/password/API key or incorrect link. Please try again.');
 	header('Location:login.php');
 }

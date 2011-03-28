@@ -132,5 +132,6 @@ class Utils {
  * Needed as a walk array callback
  */
 function issues_result($field) {
+	$field = str_replace('_', ' ', $field);
 	echo '<th align="left">' . ucfirst($field) . '</th>';
 }
