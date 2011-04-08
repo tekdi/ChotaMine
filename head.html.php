@@ -29,7 +29,7 @@ $title .= ucfirst($pcs[0]);
 		}
 		
 		for (i=0; i<count; i++) {
-			$('.copy').clone(false).removeClass('copy').removeClass('hasDatepicker').appendTo('.rows');
+			$('.copy').clone(false).removeClass('copy').removeClass('hasDatepicker').appendTo('.rows').show();
 		}
 		$('.date').datepicker({dateFormat: 'yy-mm-dd'});
 		$('#ui-datepicker-div').hide();

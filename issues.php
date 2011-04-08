@@ -37,7 +37,7 @@ $tmrw = date('Y-m-d', time() + 24 * 3600);
 		<th>Est. Hours</th>
 	</tr>
 	
-	<tr class="copy">
+	<tr class="copy" style="display:none">
 		<td valign="top"><input type="text" name="issues[subject][]" size="30"/></td>
 		<td valign="top"><input type="text" name="issues[description][]" size="36" /></td>
 		<td valign="top"><?php echo Utils::Select($users, 'issues[assigned_to_id][]', 'id="assignee"'); ?></td>
@@ -50,14 +50,14 @@ $tmrw = date('Y-m-d', time() + 24 * 3600);
 <table width="900" align="center">
 <tr>
 <td align="right">
-	<a href="#" onclick="addmore(); return false;">Add More</a> or <input type="submit" name="submit" value="Save!" />
+	<a href="#" onclick="addmore(5); return false;">Add More</a> or <input type="submit" name="submit" value="Save!" />
 </td>
 </tr>
 </table>
 
 
 <script>
-	addmore(4);
+	addmore(5);
 </script>
 
 </form>

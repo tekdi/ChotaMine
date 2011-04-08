@@ -10,7 +10,7 @@
 <div id="footer">
 	<div id="footer-wrap">
 	<p id="legal"> 
-		<strong>LITEMINE is brought to you by <a href="http://www.tekdi.net/" target="_blank"><strong>Tekdi</strong></a></strong>
+		<strong>chotamine is brought to you by <a href="http://www.tekdi.net/" target="_blank"><strong>Tekdi</strong></a></strong>
 	</p>
 	</div>
 </div>

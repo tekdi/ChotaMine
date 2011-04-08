@@ -1,9 +1,8 @@
 <?php
 error_reporting(0);
-//error_reporting(0);
-//ini_set('display_errors', 'On');
+//error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 session_start();
-$_SESSION['redmine_auth'] = array();
 $_SESSION['redmine_message'] = '';
 
 require_once 'redmine.php';
@@ -36,8 +35,10 @@ class Utils {
 	}
 	
 	function isLoggedin() {
-		$url = isset($_SESSION['redmine']['url']) || $_COOKIE['redmine_url'];
-		if (isset($_SESSION['redmine']['username']) && isset($_SESSION['redmine']['password']) && $url) {
+		$data = Utils::getAuth();
+		$url = isset($data['url']) && $data['url'] != '';// || $_COOKIE['redmine_url'];
+		$username = isset($data['username']) && $data['username'] != '';
+		if ($url && $username) {
 			return true;
 		}  else {
 			return false;
@@ -101,7 +102,7 @@ class Utils {
 	}
 	
 	function storeUrl($url) {
-		$urls = explode('|*|', $_COOKIE['redmine_url']);
+		$urls = Utils::getUrls();
 		$urls[] = urlencode($url);
 		$urls = implode('|*|', $urls);
 		
@@ -116,12 +117,25 @@ class Utils {
 	
 	function getUrls() {
 		$temp = array();
-		$urls = explode('|*|', $_COOKIE['redmine_url']);
+		$urls = isset($_COOKIE['redmine_url']) ? $_COOKIE['redmine_url'] : '';
+		$urls = explode('|*|', $urls);
 		foreach ($urls as $url) {
 			if ($url) $temp[urldecode($url)] = urldecode($url);
 		}
 
 		return $temp;
+	}
+	
+	function storeAuth($data) {
+		$_SESSION['redmine_auth'] = $data;
+	}
+	
+	function getAuth() {
+		if (isset($_SESSION['redmine_auth']) && is_array($_SESSION['redmine_auth'])) {
+			return $_SESSION['redmine_auth'];
+		} else {
+			return array('url' => '', 'username' => '', 'password' => '');
+		}
 	}
 
 }

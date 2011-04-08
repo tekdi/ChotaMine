@@ -11,9 +11,7 @@ require 'head.html.php';
 		<td align="right" width="200"><label for="username">Redmine URL</label></td>
 		<td align="left">
 			<input name="url" type="text" id="url" size="25" class="username" value="<?php echo Utils::getLastUrl(); ?>" />
-			<input type="checkbox" value="1" name="save_url" class="username" /> Save
-			<br />
-			<!--<?php echo Utils::select(Utils::getUrls(), '', 'id="urllist" onchange="loadUrl(this.value)"'); ?>-->
+			<?php echo Utils::select(Utils::getUrls(), '', 'id="urllist" onchange="loadUrl(this.value)"'); ?>
 		</td>
 	</tr>
 	
@@ -24,7 +22,7 @@ require 'head.html.php';
 
 	<tr>
 		<td align="right"><label for="password">Password</label></td>
-		<td align="left"><input name="pass" type="password" id="password" size="25" class="username" /></td>
+		<td align="left"><input name="password" type="password" id="password" size="25" class="username" /></td>
 	</tr>
 
 	<tr>
@@ -43,9 +41,7 @@ require 'head.html.php';
 		<td align="right" width="200"><label for="url">Redmine URL</label></td>
 		<td align="left">
 			<input name="url" type="text" id="url" size="25" class="key" value="<?php echo Utils::getLastUrl(); ?>" />
-			<input type="checkbox" value="1" name="save_url" class="key" /> Save
-			<br />
-			<!--<?php echo Utils::select(Utils::getUrls(), '', 'id="urllist" onchange="loadUrl(this.value)"'); ?>-->
+			<?php echo Utils::select(Utils::getUrls(), '', 'id="urllist" onchange="loadUrl(this.value)"'); ?>
 		</td>
 	</tr>
 	
@@ -64,7 +60,7 @@ require 'head.html.php';
 	</tr>
 	
 	<tr>
-		<td align="left"><!--<a href="#" onclick="loginToggle(); return false;">Provide Username/Pass</a>--></td>
+		<td align="left"><a href="#" onclick="loginToggle(); return false;">Provide Username/Pass</a></td>
 		<td align="right"><input type="submit" name="submit" value="Login" /></td>
 	</tr>
 </table>

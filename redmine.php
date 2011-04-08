@@ -8,9 +8,9 @@ class Redmine {
 	var $password 	= '';
 	
 	function Redmine($url='', $username='', $password='') {
-		$this->url 			= $url ? $url : $_SESSION['redmine']['url'];
-		$this->username		= $username ? $username : $_SESSION['redmine']['username'];
-		$this->password		= $password ? $password : $_SESSION['redmine']['password'];
+		$this->url 			= $url ? $url : $_SESSION['redmine_auth']['url'];
+		$this->username		= $username ? $username : $_SESSION['redmine_auth']['username'];
+		$this->password		= $password ? $password : $_SESSION['redmine_auth']['password'];
 		
 		if (substr($this->url,0,8) == 'https://') {
 			$site = str_replace('https://', '', $this->url);
@@ -45,7 +45,7 @@ class Redmine {
 	}
 	
 	function getProjects() {
-		if (is_object($_SESSION['redmine_data']['projects'])) {
+		if (isset($_SESSION['redmine_data']['projects']) && is_object($_SESSION['redmine_data']['projects'])) {
 			return $_SESSION['redmine_data']['projects'];
 		}
 
@@ -63,7 +63,7 @@ class Redmine {
 	}
 
 	function getUsers() {
-		if (is_object($_SESSION['redmine_data']['users'])) {
+		if (isset($_SESSION['redmine_data']['users']) && is_object($_SESSION['redmine_data']['users'])) {
 			return $_SESSION['redmine_data']['users'];
 		}
 
