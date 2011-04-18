@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require 'lib/functions.php';
 
 $data['username'] 	= $_POST['username'];
 $data['password'] 	= $_POST['password'];

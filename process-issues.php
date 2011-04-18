@@ -1,5 +1,5 @@
 <?php
-require_once 'functions.php';
+require_once 'lib/functions.php';
 
 $redmine = new Redmine();
 
@@ -7,7 +7,7 @@ $issues = Utils::collectIssues($_POST['issues']);
 $issues = $redmine->saveIssues($issues);
 
 ?>
-<?php require 'head.html.php'; ?>
+<?php require 'html/head.html.php'; ?>
 <table width="100%" cellspacing="0" cellpadding="5">
 <?php 
 $i = 0;
@@ -37,4 +37,4 @@ foreach ($issues as $line) {
 ?>
 </table>
 
-<?php require 'footer.html.php'; ?>
+<?php require 'html/footer.html.php'; ?>

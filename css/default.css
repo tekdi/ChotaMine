@@ -10,14 +10,15 @@ body {
 	background: #242424;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
-	color: #BBBBBB;
+	color: #F5F5F5;
+	background: url(../images/background.png);
 }
 
 h1, h2, h3 {
 	margin: 0;
-	text-transform: lowercase;
 	font-weight: normal;
-	color: #48ACDE;
+	color: #243B48;
+	text-shadow: 0 1px 0 #000;
 }
 
 h1 {
@@ -29,23 +30,13 @@ h2 {
 	font-size: 23px;
 }
 
-p, ul, ol {
-	margin: 0 0 2em 0;
-	text-align: justify;
-	line-height: 26px;
-}
-
-a:link {
-	color: #48ACDE;
+a:link, a:visited {
+	color: #c5c5c5;
 }
 
 a:hover, a:active {
 	text-decoration: none;
-	color: #48ACDE;
-}
-
-a:visited {
-	color: #48ACDE;
+	color: #a5a5a5;
 }
 
 img {
@@ -64,20 +55,6 @@ img.right {
 
 /* Form */
 
-form {
-	margin: 0;
-	padding: 0;
-}
-
-fieldset {
-	margin: 0;
-	padding: 0;
-	border: none;
-}
-
-legend {
-	display: none;
-}
 
 input, textarea, select {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -85,6 +62,18 @@ input, textarea, select {
 	color: #333333;
 }
 
+/* Rounded corners */
+.rounded {
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	
+	-moz-box-shadow: -1px -1px 3px 3px #666;
+	-webkit-box-shadow: -1px -1px 3px 3px #666;
+	box-shadow: -1px -1px 3px 3px #666;
+	
+	background-color: #53798E;
+}
 /* Header */
 
 #header {
@@ -92,7 +81,6 @@ input, textarea, select {
 	width: 980px;
 	height: 40px;
 	margin: 0 auto;
-	background-color: #000;
 }
 
 /* Menu */
@@ -123,17 +111,17 @@ input, textarea, select {
 	padding: 10px 20px;
 	text-decoration: none;
 	text-transform: lowercase;
-	font: 13px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
 	color: #FFFFFF;
 }
 
 #menu a:hover { 
-	text-decoration: none; 
-	color: #48ACDE;
+	text-decoration: underline; 
 }
 
 #menu .current_page_item a {
-	color: #48ACDE;
+	text-decoration: underline;
 }
 
 /** LOGO */
@@ -146,9 +134,9 @@ input, textarea, select {
 }
 
 #logo {
-	width: 820px;
-	height: 60px;
 	margin: 0 auto;
+	width: 950px;
+	height: 60px;
 }
 
 #logo h1, #logo h2 {
@@ -166,29 +154,18 @@ input, textarea, select {
 
 #logo h1 a {
 	text-decoration: none;
-	color: #FFFFFF; 
+	color: #5994B3; 
 }
-
-#logo h1 a:hover { text-decoration: underline; }
 
 #logo h2 {
 	padding: 20px 0 0 5px;
 	font: italic 13px Georgia, "Times New Roman", Times, serif;
-	color: ##48ACDE;
+	color: #999;
 }
-
-#logo p a {
-	text-decoration: none;
-	color: #B6ACA2;
-}
-
-#logo p a:hover { text-decoration: underline; }
-
 
 #wrapper {
 	width: 980px;
 	margin: 0 auto;
-	background-color: #000;
 }
 
 #wrapper-btm {
@@ -209,38 +186,16 @@ input, textarea, select {
 }
 
 /* Footer */
-#footer-wrap {
-	width: 980px;
-	height: 64px;
-	margin: 0 auto;
-}
-
 #footer {
+	width: 980px;
 	margin: 0 auto;
-	height: 64px;
-	min-height: 64px;
-	padding: 0;
 	font-size: 12px;
-}
-
-html>body #footer {
-	height: auto;
+	text-align: center;
 }
 
 #footer p {
+	line-height: 40px;
 }
-
-#legal {
-	clear: both;
-	padding-top: 10px;
-	padding-left: 30px;
-	text-align: center;
-	color: #999999;
-}
-
-#legal a {
-}
-
 
 /* Ashwin */
 .row0 {
@@ -249,11 +204,16 @@ html>body #footer {
 }
 
 .row1 {
-	background-color: #111;
+	background-color: #4B6D80;
 	color: #FFF;
 }
 
 .message {
 	text-align:center;
 	color: #E01B4C;
+}
+
+a.special {
+	font-weight: bold;
+	font-style: italic;
 }

@@ -1,5 +1,5 @@
 <?php
-require_once 'functions.php';
+require_once 'lib/functions.php';
 Utils::requireLogin();
 
 $redmine = new Redmine();
@@ -17,24 +17,24 @@ $today = date('Y-m-d');
 $tmrw = date('Y-m-d', time() + 24 * 3600);
 
 ?>
-<?php include 'head.html.php'; ?>
+<?php include 'html/head.html.php'; ?>
 <h2>Add Issues</h2>
 <p>Multiple issues can be added, all assigned to the same project.</p>
 <form method="post" action="<?php echo Utils::getProcessLink(__FILE__); ?>" class="niceform">
 
-<table cellpadding="5" class="rows" width="900" align="center">
+<table cellpadding="5" class="rows" width="900">
 	<tr class="project">
 		<th valign="top">Please Select a Project *</th>
 		<td valign="top" colspan="5"><?php echo Utils::Select($projects, 'project'); ?></td>
 	</tr>
 	
 	<tr>
-		<th>Subject *</th>
-		<th>Description</th>
-		<th>Assign To</th>
-		<th>Start Date</th>
-		<th>Due Date</th>
-		<th>Est. Hours</th>
+		<th align="left">Subject *</th>
+		<th align="left">Description</th>
+		<th align="left">Assign To</th>
+		<th align="left">Start Date</th>
+		<th align="left">Due Date</th>
+		<th align="left">Est. Hours</th>
 	</tr>
 	
 	<tr class="copy" style="display:none">
@@ -62,4 +62,4 @@ $tmrw = date('Y-m-d', time() + 24 * 3600);
 
 </form>
 
-<?php require 'footer.html.php'; ?>
+<?php require 'html/footer.html.php'; ?>

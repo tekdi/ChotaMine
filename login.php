@@ -1,6 +1,6 @@
 <?php
-require_once 'functions.php';
-require 'head.html.php'; 
+require_once 'lib/functions.php';
+require 'html/head.html.php'; 
 ?>
 
 <form method="post" action="<?php echo Utils::getProcessLink(__FILE__); ?>" class="niceform">
@@ -69,4 +69,4 @@ require 'head.html.php';
 <script>
 	loginToggle()
 </script>
-<?php require 'footer.html.php'; ?>
+<?php require 'html/footer.html.php'; ?>

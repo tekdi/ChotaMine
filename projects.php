@@ -1,5 +1,5 @@
 <?php
-require_once 'functions.php';
+require_once 'lib/functions.php';
 Utils::requireLogin();
 
 $redmine = new Redmine();
@@ -10,7 +10,7 @@ $projects = $redmine->processProjects($projects);
 
 
 ?>
-<?php include 'head.html.php'; ?>
+<?php include 'html/head.html.php'; ?>
 <form method="post" action="<?php echo Utils::getProcessLink(__FILE__); ?>" class="niceform">
 
 <h2>Create a new project</h2>
@@ -60,4 +60,4 @@ $projects = $redmine->processProjects($projects);
 
 </form>
 
-<?php require 'footer.html.php'; ?>
+<?php require 'html/footer.html.php'; ?>

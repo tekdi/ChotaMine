@@ -1,12 +1,12 @@
 <?php
-error_reporting(0);
-//error_reporting(E_ALL);
+//error_reporting(0);
+error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 session_start();
 $_SESSION['redmine_message'] = '';
 
 require_once 'redmine.php';
-require_once 'config.php';
+//require_once '../config.php';
 
 class Utils {
 	

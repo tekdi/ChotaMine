@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require 'lib/functions.php';
 
 if (Utils::isLoggedin()) {
 	header('Location: issues.php');
